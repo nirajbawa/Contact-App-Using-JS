@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Manager</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" style="Cursor:pointer" data-bs-toggle="modal"
+                            data-bs-target="#staticbox">Add Contact</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search" id="Form">
+                    <button class="btn btn-outline-success" type="submit" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div id="mainApp">
+        <table class="table" id="tb1">
+            <thead>
+                <tr>
+                    <th scope="col">Sno</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Mo.No.</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <!-- Search box -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="height:80vh;">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-center w-100" id="staticBackdropLabel">Search</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input class="form-control" style="overflow:auto;" type="text" placeholder="Search"
+                        aria-label="default input example" id="Sbox">
+                    <table class="table my-5" style="overflow: auto;" id="tb2">
+                        <thead>
+                            <tr>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Mo.No.</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer justify-content-center ">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- update contact box -->
+    <div class="modal fade" id="staticbox" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-center w-100" id="staticBackdropLabel">Add New</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body gap-4 d-flex flex-column">
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">@</span>
+                        <input type="text" class="form-control" placeholder="Name" id="Sname" aria-label="Username"
+                            aria-describedby="addon-wrapping">
+
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">#</span>
+                        <input type="text" class="form-control" placeholder="Mo.NO." id="Snum" aria-label="Username"
+                            aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center ">
+                    <button type="button" class="btn btn-primary" onclick="addNew()">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Add update contact update -->
+    <div class="modal fade" id="update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-center w-100" id="staticBackdropLabel">Update</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body gap-4 d-flex flex-column">
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">@</span>
+                        <input type="text" class="form-control" placeholder="Name" value="" id="Uname"
+                            aria-label="dsfds" aria-describedby="addon-wrapping">
+
+                    </div>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">#</span>
+                        <input type="text" class="form-control" placeholder="Mo.NO." value="" id="Unum"
+                            aria-label="dfds" aria-describedby="addon-wrapping">
+                    </div>
+
+                    <div class="input-group flex-nowrap">
+
+                        <input type="text" class="form-control" placeholder="Mo.NO." value="" id="Uid" aria-label="dfds"
+                            aria-describedby="addon-wrapping" hidden="true" readonly>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center ">
+                    <button type="button" class="btn btn-primary" onclick="UpdateData()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="./model.js"></script>
+    <script src="./index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
