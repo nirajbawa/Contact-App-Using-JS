@@ -64,6 +64,7 @@ function UpdateData() {
     let Uid = document.getElementById("Uid").value
     console.log(name)
     console.log(num)
+    console.log(Uid)
     obj.updateContact(num, name, Uid);
     alert("Contact updated added");
     document.getElementById("tbody").innerHTML = "";

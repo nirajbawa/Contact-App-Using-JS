@@ -18,7 +18,7 @@ class model {
     }
     updateContact(id, name, uid) {
         this.db.transaction(function (tx) {
-            tx.executeSql(`update contacts set name="${name}", num="${id}" where num="${uid} order by name asc"`);
+            tx.executeSql(`update contacts set name="${name}", num="${id}" where num="${uid}" `);
         });
     }
     showAllContacts() {
